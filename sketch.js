@@ -27,7 +27,12 @@ function setup() {
       grid[i][j] = 0
     }
   }
-  grid[20][10] = 1
+}
+
+function mouseDragged() {
+  let col = floor(mouseX / w)
+  let row = floor(mouseY / w)
+  grid[col][row] = 1
 }
 
 function draw() {
