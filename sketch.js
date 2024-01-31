@@ -14,12 +14,28 @@ let cols, rows
 
 
 function setup() {
-  createCanvas(200, 200)
+  createCanvas(500, 500)
   cols = width / w
   rows = height / w
   grid = make2DArrays(cols, rows)
+
+  for (let i = 0; i < cols; i++){
+    for (let j = 0; j < rows; j++){
+      grid[i][j] = 0
+    }
+  }
 }
 
 function draw() {
-  background(220)
+  background(0);
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      stroke(255);
+      fill(grid[i][j] * 255)
+      let x = i * w
+      let y = j * w
+      square(x, y, w)
+    }
+  }
 }
