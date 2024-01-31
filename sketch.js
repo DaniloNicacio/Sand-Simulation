@@ -48,9 +48,11 @@ function draw() {
       let state = grid[i][j]
       if (state === 1) {
         let below = grid[i][j + 1]
-        if (below === 0) {
+        if (below === 0 && j < rows - 1) {
           nextGrid[i][j] = 0
           nextGrid[i][j + 1] = 1
+        } else {
+          nextGrid[i][j] = 1
         }
       }
     }
