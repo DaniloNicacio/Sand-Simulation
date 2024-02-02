@@ -63,15 +63,23 @@ function draw() {
         if (random(1) < 0.5) {
           dir *= -1
         }
-        let belowA = grid[i + dir][j + 1]
-        let belowB = grid[i - dir][j + 1]
+        
+        let belowA, belowB
+
+        if (i + dir >= 0 && i + dir <= cols - 1) {
+          belowA = grid[i + dir][j + 1]
+        }
+        if (i - dir >= 0 && i - dir <= cols - 1) {
+          belowB = grid[i - dir][j + 1]
+        }
+        
     
         if (below === 0) {
           nextGrid[i][j + 1] = 1
         }else if (belowA === 0) {
-          nextGrid[i + dir][j] = 1
+          nextGrid[i + dir][j + 1] = 1
         } else if (belowB === 0) {
-          nextGrid[i - dir][j] = 1
+          nextGrid[i - dir][j + 1] = 1
         } else {
           nextGrid[i][j] = 1
         }
