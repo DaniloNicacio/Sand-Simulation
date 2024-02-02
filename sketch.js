@@ -35,6 +35,12 @@ function mouseDragged() {
   grid[col][row] = 1
 }
 
+function mousePressed() {
+  let col = floor(mouseX / w)
+  let row = floor(mouseY / w)
+  grid[col][row] = 1
+}
+
 function draw() {
   background(0);
 
@@ -53,9 +59,19 @@ function draw() {
       let state = grid[i][j]
       if (state === 1) {
         let below = grid[i][j + 1]
-        if (below === 0 && j < rows - 1) {
-          nextGrid[i][j] = 0
+        let dir = 1
+        if (random(1) < 0.5) {
+          dir *= -1
+        }
+        let belowA = grid[i + dir][j + 1]
+        let belowB = grid[i - dir][j + 1]
+    
+        if (below === 0) {
           nextGrid[i][j + 1] = 1
+        }else if (belowA === 0) {
+          nextGrid[i + dir][j] = 1
+        } else if (belowB === 0) {
+          nextGrid[i - dir][j] = 1
         } else {
           nextGrid[i][j] = 1
         }
