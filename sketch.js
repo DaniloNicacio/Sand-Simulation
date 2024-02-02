@@ -109,8 +109,6 @@ function draw() {
         if (i - dir >= 0 && i - dir <= cols - 1) {
           belowB = grid[i - dir][j + 1]
         }
-        
-    
         if (below === 0) {
           nextGrid[i][j + 1] = grid[i][j]
         }else if (belowA === 0) {
